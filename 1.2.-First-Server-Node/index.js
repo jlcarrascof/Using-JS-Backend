@@ -1,3 +1,4 @@
-const hello_world = require('./hello-world-nodejs')
-
-console.log(hello_world.message())
+const http = require('http');
+const server = http.createServer();
+server.listen(8000);
+console.log('Server is running on port 8000');
