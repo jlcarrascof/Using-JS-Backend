@@ -1,11 +1,13 @@
 const http = require('http');
 const server = http.createServer(onRequest);
-server.listen(8000);
-console.log('Server is running on port 8000');
+const PORT = 8000;
+server.listen(PORT, () => {
+    console.log('Server is running on port 8000');
+});
 
-function onRequest(request, response) {
+function onRequest(req, res) {
     console.log('Request received');
-    response.setHeader('Content-Type', 'text/html');
-    response.write('Welcome to the NodeJS course');
-    response.end();
+    res.setHeader('Content-Type', 'text/html');
+    res.write('Welcome to the NodeJS course');
+    res.end();
 }
