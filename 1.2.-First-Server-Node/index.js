@@ -21,14 +21,31 @@ function onRequest(req, res) {
                     console.log(err);
                 }
             } else {
+                res.setStatus = 200;
                 res.setHeader('Content-Type', 'text/html');
                 res.write(content);
                 res.end();
             }
         } else if (req.url === '/users') {
             if (req.method === 'GET') {
+                res.setStatus = 200;
                 res.setHeader('Content-Type', 'text/html');
                 res.write('Accessing to users');
+                res.end();
+            } else if (req.method === 'POST') {
+                res.setStatus = 200;
+                res.setHeader('Content-Type', 'text/html');
+                res.write('Creating a new user');
+                res.end();
+            } else if (req.method === 'PUT') {
+                res.setStatus = 200;
+                res.setHeader('Content-Type', 'text/html');
+                res.write('Updating a user');
+                res.end();
+            } else if (req.method === 'DELETE') {
+                res.setStatus = 200;
+                res.setHeader('Content-Type', 'text/html');
+                res.write('Deleting a user');
                 res.end();
             }
         }
