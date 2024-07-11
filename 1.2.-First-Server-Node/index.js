@@ -35,10 +35,13 @@ function onRequest(req, res) {
                 res.write('Accessing to users');
                 res.end();
             } else if (req.method === 'POST') {
-                res.setStatus = 200;
-                res.setHeader('Content-Type', 'text/html');
-                res.write('Creating a new user');
-                res.end();
+                var data = '';
+                req.on('data', (d) => {
+                    data += d;
+                });
+                req.on('end', () => {
+
+                });
             } else if (req.method === 'PUT') {
                 res.setStatus = 200;
                 res.setHeader('Content-Type', 'text/html');
