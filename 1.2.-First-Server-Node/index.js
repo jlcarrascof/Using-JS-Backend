@@ -8,6 +8,7 @@ server.listen(PORT, () => {
 function onRequest(req, res) {
     console.log('Request received');
     res.setHeader('Content-Type', 'text/html');
-    res.write('Welcome to the NodeJS course');
+    res.write('<h1>Welcome to the NodeJS course</h1>');
+    res.write('<h2>Testing page</h2>');
     res.end();
 }
