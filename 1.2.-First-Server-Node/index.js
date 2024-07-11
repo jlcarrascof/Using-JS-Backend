@@ -25,6 +25,10 @@ function onRequest(req, res) {
                 res.write(content);
                 res.end();
             }
+        } else if (req.url === '/users') {
+            res.setHeader('Content-Type', 'text/html');
+            res.write('Accessing to users');
+            res.end();
         }
     });
 }
