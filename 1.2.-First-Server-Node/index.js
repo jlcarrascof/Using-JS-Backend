@@ -8,12 +8,14 @@ server.listen(PORT, () => {
 
 function onRequest(req, res) {
     console.log('Request received');
-    fs.readFile('inde.html', (err, content) => {
+    fs.readFile('index.html', (err, content) => {
         if (err) {
             if (err.code === 'ENOENT') {
+                res.setStatus = 404;
                 res.write('File not found');
                 res.end();
             } else {
+                res.setStatus = 500;
                 console.log('It was an error in the server');
                 console.log(err);
             }
