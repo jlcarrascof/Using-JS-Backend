@@ -2,6 +2,8 @@ const http = require('http');
 const server = http.createServer(onRequest);
 const PORT = 8000;
 const fs = require('fs');
+const qs = require('querystring');
+
 server.listen(PORT, () => {
     console.log('Server is running on port 8000');
 });
