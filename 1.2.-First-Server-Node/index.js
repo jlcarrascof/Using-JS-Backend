@@ -40,7 +40,8 @@ function onRequest(req, res) {
                     data += d;
                 });
                 req.on('end', () => {
-
+                    var post = qs.parse(data);
+                    res.end('Data received: ' + post.name);
                 });
             } else if (req.method === 'PUT') {
                 res.setStatus = 200;
