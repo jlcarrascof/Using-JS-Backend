@@ -44,15 +44,23 @@ function onRequest(req, res) {
                     res.end('Data received: ' + post.name);
                 });
             } else if (req.method === 'PUT') {
-                res.setStatus = 200;
-                res.setHeader('Content-Type', 'text/html');
-                res.write('Updating a user');
-                res.end();
+                var data = '';
+                req.on('data', (d) => {
+                    data += d;
+                });
+                req.on('end', () => {
+                    var post = qs.parse(data);
+                    res.end('Data updated: ' + post.name);
+                });
             } else if (req.method === 'DELETE') {
-                res.setStatus = 200;
-                res.setHeader('Content-Type', 'text/html');
-                res.write('Deleting a user');
-                res.end();
+                var data = '';
+                req.on('data', (d) => {
+                    data += d;
+                });
+                req.on('end', () => {
+                    var post = qs.parse(data);
+                    res.end('Data deleted: ' + post.name);
+                });
             }
         }
     });
