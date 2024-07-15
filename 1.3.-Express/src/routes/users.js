@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router;
+const router = express.Router();
 
 router.get('/users', (req, res) => {
     res.send('Printing all users');
