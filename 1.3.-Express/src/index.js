@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
     res.send('Welcome');
 })
 
-app.use(user);
+app.use('/users', user);
 
 app.listen(port, () => {
     console.log("My app is running at port 3000");
