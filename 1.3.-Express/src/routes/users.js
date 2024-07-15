@@ -1,20 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/users', (req, res) => {
-    res.send('Printing all users');
-})
+router.get('/users',)
 
-router.get('/create', (req, res) => {
-    res.send('Create users');
-})
+router.get('/create', )
 
-router.get('/update', (req, res) => {
-    res.send('Update users');
-})
+router.get('/update', )
 
-router.get('/delete', (req, res) => {
-    res.send('Delete users');
-})
+router.get('/delete', )
 
 module.exports = router;
