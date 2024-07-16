@@ -5,15 +5,6 @@ const user = require('./routes/users.js');
 
 // Middlewares ...
 
-const isLogged = (req, res, next) => {
-    let logged = false;
-    if (logged) {
-        next()
-    } else {
-        res.send("You must be logged")
-    }
-}
-
 app.use(isLogged);
 
 // Routes...
