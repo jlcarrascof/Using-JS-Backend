@@ -6,8 +6,11 @@ const user = require('./routes/users.js');
 // Middlewares ...
 
 const my_middleware = (req, res, next) => {
-
+    console.log("Running middleware");
+    next();
 }
+
+app.use(my_middleware);
 
 // Routes...
 
