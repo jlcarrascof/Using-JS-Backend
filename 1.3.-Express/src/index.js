@@ -7,7 +7,7 @@ const loggedMiddleware = require('./middlewares/logged.js')
 
 // Middlewares ...
 
-app.use(loggedMiddleware.isLogged);
+// app.use(loggedMiddleware.isLogged);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes...
