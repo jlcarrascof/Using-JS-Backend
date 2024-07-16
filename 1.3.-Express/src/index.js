@@ -6,11 +6,11 @@ const user = require('./routes/users.js');
 // Middlewares ...
 
 const isLogged = (req, res, next) => {
-    let logged = true;
+    let logged = false;
     if (logged) {
         next()
     } else {
-        console.log("You must be logged")
+        res.send("You must be logged")
     }
 }
 
