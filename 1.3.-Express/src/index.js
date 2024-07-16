@@ -2,10 +2,11 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const user = require('./routes/users.js');
+const loggedMiddleware = require('./middlewares/logged.js')
 
 // Middlewares ...
 
-app.use(isLogged);
+app.use(loggedMiddleware.isLogged);
 
 // Routes...
 
