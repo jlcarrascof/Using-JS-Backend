@@ -1,5 +1,8 @@
+const path = require('path');
+const root = path.join(__dirname, '../public');
+
 const getUsers =  (req, res) => {
-    res.send('Printing all users');
+    res.sendFile('users.html', {root: root});
 }
 
 const createUsers = (req, res) => {
