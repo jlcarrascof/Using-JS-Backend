@@ -3,6 +3,12 @@ const app = express();
 const port = 3000;
 const user = require('./routes/users.js');
 
+// Middlewares ...
+
+const my_middleware = (req, res, next) => {
+
+}
+
 // Routes...
 
 app.get('/', (req, res) => {
