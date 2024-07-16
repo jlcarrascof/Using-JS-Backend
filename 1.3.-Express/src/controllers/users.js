@@ -6,15 +6,15 @@ const getUsers =  (req, res) => {
 }
 
 const createUsers = (req, res) => {
-    res.sendFile('create-users.html', {root: root});
+    res.sendFile('create-user.html', {root: root});
 }
 
 const updateUsers = (req, res) => {
-    res.sendFile('update-users.html', {root: root});
+    res.sendFile('update-user.html', {root: root});
 }
 
 const deleteUsers = (req, res) => {
-    res.sendFile('delete-users.html', {root: root});
+    res.sendFile('delete-user.html', {root: root});
 }
 
 module.exports = {
