@@ -8,21 +8,21 @@ const getUsers =  (req, res) => {
     res.render('users', {users: users});
 }
 
-const createUsers = (req, res) => {
+const getCreateUsers = (req, res) => {
     res.render('create-user');
 }
 
-const updateUsers = (req, res) => {
+const getUpdateUsers = (req, res) => {
     res.render('update-user');
 }
 
-const deleteUsers = (req, res) => {
+const getDeleteUsers = (req, res) => {
     res.render('delete-user');
 }
 
 module.exports = {
     getUsers,
-    createUsers,
-    updateUsers,
-    deleteUsers
+    getCreateUsers,
+    getUpdateUsers,
+    getDeleteUsers
 }
