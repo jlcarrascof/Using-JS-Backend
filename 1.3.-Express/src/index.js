@@ -14,6 +14,7 @@ app.set('views', path.join(__dirname, 'views'));
 // app.use(loggedMiddleware.isLogged);
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({extended: false}));
 
 // Routes...
 
