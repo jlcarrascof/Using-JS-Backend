@@ -8,6 +8,7 @@ const loggedMiddleware = require('./middlewares/logged.js')
 app.set('title', 'App made with Node');
 app.set('port', '3000');
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 // Middlewares ...
 // app.use(loggedMiddleware.isLogged);
@@ -17,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes...
 
 app.get('/', (req, res) => {
-    res.send('Welcome');
+    res.render('Welcome');
 })
 
 app.use('/users', user);
