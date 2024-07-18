@@ -1,6 +1,3 @@
-const path = require('path');
-const root = path.join(__dirname, '../public');
-
 const getUsers =  (req, res) => {
     res.render('users');
 }
