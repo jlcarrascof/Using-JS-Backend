@@ -13,11 +13,13 @@
             <td>Name</td>
             <td>Age</td>
         </tr>
-        <% users.forEach((user) => { %>
-            <tr> <%= user.id %> </tr>
-            <tr> <%= user.name %> </tr>
-            <tr> <%= user.age %> </tr>
-        <% }) %>
+        <tr>
+            <% users.forEach((user) => { %>
+                <td> <%= user.id %> </td>
+                <td> <%= user.name %> </td>
+                <td> <%= user.age %> </td>
+            <% }) %>
+        </tr>
     </table>
 </body>
 </html>
