@@ -7,6 +7,7 @@ const loggedMiddleware = require('./middlewares/logged.js')
 // Settings
 app.set('title', 'App made with Node');
 app.set('port', '3000');
+app.set('view engine', 'ejs');
 
 // Middlewares ...
 // app.use(loggedMiddleware.isLogged);
