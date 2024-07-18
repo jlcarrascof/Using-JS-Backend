@@ -20,6 +20,18 @@ const getDeleteUsers = (req, res) => {
     res.render('delete-user');
 }
 
+const createUser = (req, res) => {
+
+}
+
+const updateUser = (req, res) => {
+
+}
+
+const deleteUser = (req, res) => {
+
+}
+
 module.exports = {
     getUsers,
     getCreateUsers,
