@@ -26,7 +26,13 @@ const createUser = (req, res) => {
 }
 
 const updateUser = (req, res) => {
+    const param = req.params.id;
 
+    for (let i=0; i < users.length; i++) {
+
+    }
+
+    res.render('users', {users: users});
 }
 
 const deleteUser = (req, res) => {
