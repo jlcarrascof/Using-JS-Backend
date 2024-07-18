@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
-const port = 3000;
 const path = require('path');
 const user = require('./routes/users.js');
 const loggedMiddleware = require('./middlewares/logged.js')
 
 // Settings
 app.set('title', 'App made with Node');
+app.set('port', '3000');
 
 // Middlewares ...
 // app.use(loggedMiddleware.isLogged);
@@ -21,6 +21,6 @@ app.get('/', (req, res) => {
 
 app.use('/users', user);
 
-app.listen(port, () => {
-    console.log("My " + app.get('title') + " is running at port 3000");
+app.listen(app.get('port'), () => {
+    console.log("My " + app.get('title') + " is running at port " + app.get('port'));
 })
