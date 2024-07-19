@@ -40,7 +40,15 @@ const updateUser = (req, res) => {
 }
 
 const deleteUser = (req, res) => {
+    const param = req.params.id;
 
+    for (let i=0; i < users.length; i++) {
+        if (param == users[i].id) {
+
+        }
+    }
+
+    res.render('users', {users: users});
 }
 
 module.exports = {
