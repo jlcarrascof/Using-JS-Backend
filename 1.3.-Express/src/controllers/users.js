@@ -44,7 +44,8 @@ const deleteUser = (req, res) => {
 
     for (let i=0; i < users.length; i++) {
         if (param == users[i].id) {
-
+            users.splice(i, 1);
+            break;
         }
     }
 
