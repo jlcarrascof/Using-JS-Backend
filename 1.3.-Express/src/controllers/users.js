@@ -29,7 +29,7 @@ const updateUser = (req, res) => {
     const param = req.params.id;
 
     for (let i=0; i < users.length; i++) {
-        if (param === users[i].id) {
+        if (param == users[i].id) {
             users[i].name = req.body.name;
             users[i].age = req.body.age;
             break;
