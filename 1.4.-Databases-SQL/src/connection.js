@@ -10,3 +10,5 @@ connection.connect((err, conn) => {
         return conn;
     }
 })
+
+module.exports = connection;
