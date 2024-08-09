@@ -8,7 +8,14 @@ const users = [
 
 const getUsers =  (req, res) => {
     const sql = 'SELECT * FROM users';
-    res.render('users', {users: users});
+    connection.query(sql, (err, result) => {
+        if (err) {
+            console.log('An error ocurred');
+        } else {
+            console.log(result);
+            res.render('users', {users: users});
+        }
+    });
 }
 
 const getCreateUsers = (req, res) => {
