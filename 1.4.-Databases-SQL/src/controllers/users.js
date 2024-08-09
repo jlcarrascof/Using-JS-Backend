@@ -1,11 +1,5 @@
 const connection = require('../connection');
 
-const users = [
-    {id: 1, name: 'John', age: 25},
-    {id: 2, name: 'Maria', age: 33},
-    {id: 3, name: 'Joe', age: 28},
-]
-
 const getUsers =  (req, res) => {
     const sql = 'SELECT * FROM users';
     connection.query(sql, (err, result) => {
@@ -13,7 +7,7 @@ const getUsers =  (req, res) => {
             console.log('An error ocurred');
         } else {
             console.log(result);
-            res.render('users', {users: users});
+            res.render('users', {users: result});
         }
     });
 }
