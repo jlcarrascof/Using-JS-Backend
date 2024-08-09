@@ -1,3 +1,5 @@
+const connection = require('../connection');
+
 const users = [
     {id: 1, name: 'John', age: 25},
     {id: 2, name: 'Maria', age: 33},
@@ -5,6 +7,7 @@ const users = [
 ]
 
 const getUsers =  (req, res) => {
+    const sql = 'SELECT * FROM users';
     res.render('users', {users: users});
 }
 
