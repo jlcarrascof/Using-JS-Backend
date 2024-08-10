@@ -16,3 +16,12 @@ td {
     text-align: center;
     text-decoration: none;
 }
+
+#btn-delete {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+}
