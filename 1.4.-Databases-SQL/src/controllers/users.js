@@ -1,11 +1,15 @@
-const users = [
-    {id: 1, name: 'John', age: 25},
-    {id: 2, name: 'Maria', age: 33},
-    {id: 3, name: 'Joe', age: 28},
-]
+const connection = require('../connection');
 
 const getUsers =  (req, res) => {
-    res.render('users', {users: users});
+    const sql = 'SELECT * FROM users';
+    connection.query(sql, (err, result) => {
+        if (err) {
+            console.log('An error ocurred');
+        } else {
+            console.log(result);
+            res.render('users', {users: result});
+        }
+    });
 }
 
 const getCreateUsers = (req, res) => {
@@ -21,8 +25,16 @@ const getDeleteUsers = (req, res) => {
 }
 
 const createUser = (req, res) => {
-    users.push(req.body);
-    res.render('users', {users: users});
+    const sql = 'INSERT INTO users SET ?';
+    const data = req.body;
+    connection.query(sql, data, (err, result) => {
+        if (err) {
+            console.log('An error ocurred');
+        } else {
+            console.log('User created');
+            res.redirect('/users/all');
+        }
+    });
 }
 
 const updateUser = (req, res) => {

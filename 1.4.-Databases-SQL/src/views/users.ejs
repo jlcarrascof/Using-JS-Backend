@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
     <h1>All Users</h1>
@@ -12,12 +13,16 @@
             <td>ID</td>
             <td>Name</td>
             <td>Age</td>
+            <td>Update</td>
+            <td>Delete</td>
         </tr>
         <% users.forEach((user) => { %>
             <tr>
                 <td> <%= user.id %> </td>
                 <td> <%= user.name %> </td>
                 <td> <%= user.age %> </td>
+                <td><a id="btn-update" href="/users/update/<%= user.id %>">Update</a></td>
+                <td><a id="btn-delete" href="/users/delete/<%= user.id %>">Delete</a></td>
             </tr>
         <% }) %>
     </table>
