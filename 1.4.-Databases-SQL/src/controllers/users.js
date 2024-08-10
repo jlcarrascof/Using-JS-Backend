@@ -25,8 +25,7 @@ const getDeleteUsers = (req, res) => {
 }
 
 const createUser = (req, res) => {
-    users.push(req.body);
-    res.render('users', {users: users});
+    console.log(req.body);
 }
 
 const updateUser = (req, res) => {
