@@ -17,6 +17,10 @@ const getCreateUsers = (req, res) => {
 }
 
 const getUpdateUsers = (req, res) => {
+    const param = req.params.id;
+    const sql = 'SELECT * FROM users WHERE id = ?';
+    connection.query();
+    console.log(param);
     res.render('update-user');
 }
 
