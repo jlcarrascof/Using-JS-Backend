@@ -24,9 +24,9 @@ const getUpdateUsers = (req, res) => {
             console.log('An error ocurred: ', err);
         } else {
             console.log(result);
+            res.render('update-user', {user:result});
         }
     });
-    res.render('update-user');
 }
 
 const getDeleteUsers = (req, res) => {
