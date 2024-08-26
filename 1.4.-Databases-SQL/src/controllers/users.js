@@ -48,16 +48,15 @@ const createUser = (req, res) => {
 
 const updateUser = (req, res) => {
     const param = req.params.id;
-
-    for (let i=0; i < users.length; i++) {
-        if (param == users[i].id) {
-            users[i].name = req.body.name;
-            users[i].age = req.body.age;
-            break;
+    const sql = `UPDATE users SET name='${req.body.name}', age=${req.body.age} WHERE id = ${param}`;
+    connection.query(sql, (err, result) => {
+        if (err) {
+            console.log('An error ocurred ', err)
+        } else {
+            console.log('User updated');
+            res.redirect('/users/all');
         }
-    }
-
-    res.render('users', {users: users});
+    });
 }
 
 const deleteUser = (req, res) => {
