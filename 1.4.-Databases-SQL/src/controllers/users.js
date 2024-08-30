@@ -30,7 +30,16 @@ const getUpdateUsers = (req, res) => {
 }
 
 const getDeleteUsers = (req, res) => {
-    res.render('delete-user');
+    const param = req.params.id;
+    const sql = 'SELECT * FROM users WHERE id = ?';
+    connection.query(sql, param, (err, result) => {
+        if (err) {
+            console.log('An error ocurred: ', err);
+        } else {
+            console.log(result);
+            res.render('delete-user', {user:result});
+        }
+    });
 }
 
 const createUser = (req, res) => {
