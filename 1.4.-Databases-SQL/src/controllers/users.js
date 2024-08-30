@@ -70,15 +70,15 @@ const updateUser = (req, res) => {
 
 const deleteUser = (req, res) => {
     const param = req.params.id;
-
-    for (let i=0; i < users.length; i++) {
-        if (param == users[i].id) {
-            users.splice(i, 1);
-            break;
+    const sql = `DELETE FROM users WHERE id = ${param}`;
+    connection.query(sql, (err, result) => {
+        if (err) {
+            console.log('An error ocurred ', err)
+        } else {
+            console.log('User deleted');
+            res.redirect('/users/all');
         }
-    }
-
-    res.render('users', {users: users});
+    });
 }
 
 module.exports = {
