@@ -17,11 +17,29 @@ const getCreateUsers = (req, res) => {
 }
 
 const getUpdateUsers = (req, res) => {
-    res.render('update-user');
+    const param = req.params.id;
+    const sql = 'SELECT * FROM users WHERE id = ?';
+    connection.query(sql, param, (err, result) => {
+        if (err) {
+            console.log('An error ocurred: ', err);
+        } else {
+            console.log(result);
+            res.render('update-user', {user:result});
+        }
+    });
 }
 
 const getDeleteUsers = (req, res) => {
-    res.render('delete-user');
+    const param = req.params.id;
+    const sql = 'SELECT * FROM users WHERE id = ?';
+    connection.query(sql, param, (err, result) => {
+        if (err) {
+            console.log('An error ocurred: ', err);
+        } else {
+            console.log(result);
+            res.render('delete-user', {user:result});
+        }
+    });
 }
 
 const createUser = (req, res) => {
@@ -39,29 +57,28 @@ const createUser = (req, res) => {
 
 const updateUser = (req, res) => {
     const param = req.params.id;
-
-    for (let i=0; i < users.length; i++) {
-        if (param == users[i].id) {
-            users[i].name = req.body.name;
-            users[i].age = req.body.age;
-            break;
+    const sql = `UPDATE users SET name='${req.body.name}', age=${req.body.age} WHERE id = ${param}`;
+    connection.query(sql, (err, result) => {
+        if (err) {
+            console.log('An error ocurred ', err)
+        } else {
+            console.log('User updated');
+            res.redirect('/users/all');
         }
-    }
-
-    res.render('users', {users: users});
+    });
 }
 
 const deleteUser = (req, res) => {
     const param = req.params.id;
-
-    for (let i=0; i < users.length; i++) {
-        if (param == users[i].id) {
-            users.splice(i, 1);
-            break;
+    const sql = `DELETE FROM users WHERE id = ${param}`;
+    connection.query(sql, (err, result) => {
+        if (err) {
+            console.log('An error ocurred ', err)
+        } else {
+            console.log('User deleted');
+            res.redirect('/users/all');
         }
-    }
-
-    res.render('users', {users: users});
+    });
 }
 
 module.exports = {

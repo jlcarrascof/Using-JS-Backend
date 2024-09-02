@@ -4,11 +4,11 @@ const userController = require('../controllers/users')
 
 router.get('/all', userController.getUsers)
 router.get('/create', userController.getCreateUsers)
-router.get('/update', userController.getUpdateUsers)
-router.get('/delete', userController.getDeleteUsers)
+router.get('/update/:id', userController.getUpdateUsers)
+router.get('/delete/:id', userController.getDeleteUsers)
 
 router.post('/create', userController.createUser)
-router.put('/update/:id', userController.updateUser)
-router.delete('/delete/:id', userController.deleteUser)
+router.post('/update/:id', userController.updateUser)
+router.post('/delete/:id', userController.deleteUser)
 
 module.exports = router;
