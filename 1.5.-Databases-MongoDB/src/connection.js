@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const { mysql_database } = require('./config');
+const { mongodb } = require('./config');
 
 const connection = mysql.createConnection(mysql_database);
 connection.connect((err, conn) => {
