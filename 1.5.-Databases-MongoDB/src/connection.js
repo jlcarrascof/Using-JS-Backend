@@ -1,14 +1,10 @@
-const mysql = require('mysql');
+const mongoose = require('mongoose');
 const { mongodb } = require('./config');
 
-const connection = mysql.createConnection(mysql_database);
-connection.connect((err, conn) => {
-    if (err) {
-        console.log('An error ocurred');
-    } else {
-        console.log('Connection succesful');
-        return conn;
-    }
-})
+mongoose.connect(`mongodb://${mongodb.host}:${mongodb.port}/${mongodb.database}`).then(() => {
+    console.log('Connection succesful');
+});
+
+
 
 module.exports = connection;
