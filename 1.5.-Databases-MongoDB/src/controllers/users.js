@@ -1,8 +1,7 @@
 const User = require('../models/User');
 
 const getUsers =  (req, res) => {
-    const sql = 'SELECT * FROM users';
-    connection.query(sql, (err, result) => {
+    User.find({}, (err, result) => {
         if (err) {
             console.log('An error ocurred');
         } else {
