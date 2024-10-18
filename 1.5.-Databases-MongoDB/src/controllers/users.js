@@ -1,4 +1,4 @@
-const connection = require('../connection');
+const User = require('../models/User');
 
 const getUsers =  (req, res) => {
     const sql = 'SELECT * FROM users';
