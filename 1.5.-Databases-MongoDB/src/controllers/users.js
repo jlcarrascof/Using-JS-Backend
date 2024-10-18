@@ -1,12 +1,12 @@
-const User = require('../models/User');
+const User = require('../models/users.js')
 
 const getUsers =  (req, res) => {
     User.find({}, (err, result) => {
         if (err) {
-            console.log('An error ocurred');
+            console.log('An error ocurred')
         } else {
-            console.log(result);
-            res.render('users', {users: result});
+            console.log(result)
+            res.render('users', {users: result})
         }
     });
 }
