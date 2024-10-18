@@ -58,20 +58,27 @@ const createUser = (req, res) => {
 */
 
 const createUser = (req, res) => {
-    const data = req.body;
+    const data = req.body
+
+    // simple validation
+    if (!data.name || !data.age) {
+        return res.status(400).send('Name and age are required.')
+    }
+
     const user = new User({
         name: data.name,
         age: data.age
-    });
+    })
 
-    user.save((err, result) => {
-        if (err) {
-            console.log('An error ocurred');
-        } else {
-            console.log('User created');
-            res.redirect('/users/all');
-        }
-    });
+    user.save()
+        .then(() => {
+            console.log('User created')
+            res.redirect('/users/all')
+        })
+        .catch(err => {
+            console.error('An error occurred:', err)
+            res.status(500).send('Error al crear el usuario.')
+        });
 }
 
 const updateUser = (req, res) => {
