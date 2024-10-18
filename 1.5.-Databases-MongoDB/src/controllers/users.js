@@ -58,9 +58,13 @@ const createUser = (req, res) => {
 */
 
 const createUser = (req, res) => {
-    const sql = 'INSERT INTO users SET ?';
     const data = req.body;
-    connection.query(sql, data, (err, result) => {
+    const user = new User({
+        name: data.name,
+        age: data.age
+    });
+
+    user.save((err, result) => {
         if (err) {
             console.log('An error ocurred');
         } else {
