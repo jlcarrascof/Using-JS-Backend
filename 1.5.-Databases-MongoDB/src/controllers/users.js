@@ -1,15 +1,16 @@
 const User = require('../models/users.js')
 
-const getUsers =  (req, res) => {
-    User.find({}, (err, result) => {
-        if (err) {
-            console.log('An error ocurred')
-        } else {
-            console.log(result)
-            res.render('users', {users: result})
-        }
-    });
-}
+const getUsers = (req, res) => {
+    User.find({})
+      .then(result => {
+        console.log(result);
+        res.render('users', { users: result });
+      })
+      .catch(err => {
+        console.log('An error occurred');
+        res.status(500).send('Error fetching users');
+      });
+};
 
 const getCreateUsers = (req, res) => {
     res.render('create-user');
