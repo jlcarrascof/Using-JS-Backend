@@ -18,14 +18,17 @@ const getCreateUsers = (req, res) => {
 
 const getUpdateUsers = (req, res) => {
     const param = req.params.id;
-    User.find({_id: param})
-      .then(result => {
-        console.log(result);
-        res.render('update-users', { users: result });
+    User.findById(param)
+      .then(user => {
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+        console.log(user);
+        res.render('update-user', { user });
       })
       .catch(err => {
-        console.log('An error occurred');
-        res.status(500).send('Error fetching users');
+        console.log('An error occurred', err);
+        res.status(500).send('Error fetching user');
       });
 }
 
