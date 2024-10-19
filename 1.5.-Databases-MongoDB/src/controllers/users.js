@@ -42,21 +42,6 @@ const getDeleteUsers = (req, res) => {
     });
 }
 
-/*
-const createUser = (req, res) => {
-    const sql = 'INSERT INTO users SET ?';
-    const data = req.body;
-    connection.query(sql, data, (err, result) => {
-        if (err) {
-            console.log('An error ocurred');
-        } else {
-            console.log('User created');
-            res.redirect('/users/all');
-        }
-    });
-}
-*/
-
 const createUser = (req, res) => {
     const data = req.body
 
