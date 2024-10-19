@@ -91,19 +91,21 @@ const updateUser = (req, res) => {
       });
 };
 
-
 const deleteUser = (req, res) => {
     const param = req.params.id;
-    const sql = `DELETE FROM users WHERE id = ${param}`;
-    connection.query(sql, (err, result) => {
-        if (err) {
-            console.log('An error ocurred ', err)
-        } else {
+    User.findByIdAndDelete(param)
+        .then(result => {
+            if (!result) {
+                return res.status(404).send('User not found');
+            }
             console.log('User deleted');
             res.redirect('/users/all');
-        }
-    });
-}
+        })
+        .catch(err => {
+            console.log('An error occurred:', err);
+            res.status(500).send('Error deleting user');
+        });
+};
 
 module.exports = {
     getUsers,
