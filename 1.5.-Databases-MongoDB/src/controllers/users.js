@@ -33,16 +33,18 @@ const getUpdateUsers = (req, res) => {
 
 const getDeleteUsers = (req, res) => {
     const param = req.params.id;
-    const sql = 'SELECT * FROM users WHERE id = ?';
-    connection.query(sql, param, (err, result) => {
-        if (err) {
-            console.log('An error ocurred: ', err);
-        } else {
-            console.log(result);
-            res.render('delete-user', {user:result});
-        }
-    });
-}
+    User.findById(param)
+        .then(user => {
+            if (!user) {
+                return res.status(404).send('User not found');
+            }
+            res.render('delete-user', { user });
+        })
+        .catch(err => {
+            console.log('An error occurred:', err);
+            res.status(500).send('Error fetching user');
+        });
+};
 
 const createUser = (req, res) => {
     const data = req.body
