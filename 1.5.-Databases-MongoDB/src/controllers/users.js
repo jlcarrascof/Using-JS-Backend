@@ -23,7 +23,6 @@ const getUpdateUsers = (req, res) => {
         if (!user) {
             return res.status(404).send('User not found');
         }
-        console.log(user);
         res.render('update-user', { user });
       })
       .catch(err => {
