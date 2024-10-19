@@ -64,22 +64,30 @@ const createUser = (req, res) => {
         })
         .catch(err => {
             console.error('An error occurred:', err)
-            res.status(500).send('Error al crear el usuario.')
+            res.status(500).send('Error creating user')
         });
 }
 
 const updateUser = (req, res) => {
-    const param = req.params.id;
-    const sql = `UPDATE users SET name='${req.body.name}', age=${req.body.age} WHERE id = ${param}`;
-    connection.query(sql, (err, result) => {
-        if (err) {
-            console.log('An error ocurred ', err)
-        } else {
-            console.log('User updated');
-            res.redirect('/users/all');
-        }
-    });
-}
+    const userId = req.params.id;
+    const updatedData = {
+        name: req.body.name,
+        age: req.body.age
+    };
+
+    // Update the user with the given ID
+    User.findByIdAndUpdate(userId, updatedData, { new: true })
+      .then(updatedUser => {
+          if (!updatedUser) {
+              return res.status(404).send('User not found');
+          }
+          res.redirect('/users/all');
+      })
+      .catch(err => {
+          console.log('Error updating user:', err);
+          res.status(500).send('Error updating user');
+      });
+};
 
 
 const deleteUser = (req, res) => {
